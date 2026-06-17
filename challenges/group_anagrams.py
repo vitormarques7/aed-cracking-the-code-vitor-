@@ -1,2 +1,12 @@
 def group_anagrams(words: list[str]) -> list[list[str]]:
-    raise NotImplementedError
+    groups: dict[str, list[str]] = {}
+
+    for word in words:
+        key = "".join(sorted(word))
+
+        if key not in groups:
+            groups[key] = []
+
+        groups[key].append(word)
+
+    return list(groups.values())
